@@ -1,4 +1,6 @@
 function main(input) {
+	//分割代入の書き方
+	//配列の要素やオブジェクトのプロパティを分解して、変数や定数に代入する方法
 	let [a, b] = input;
 
 	a = Number(a);

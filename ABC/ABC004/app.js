@@ -6,7 +6,6 @@ function main(input) {
 }
 
 main(require("fs").readFileSync("/dev/stdin", "utf8").split(" "));
-
 /*[問題文に必要なこと]
 ・高橋くんはN円の借金をした。
 ・倍返しをするため、2*N円返済することを決意。

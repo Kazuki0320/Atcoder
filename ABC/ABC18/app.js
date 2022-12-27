@@ -1,5 +1,5 @@
-var lines=[];
-var reader = require('readline').createInterface({
+let lines=[];
+let reader = require('readline').createInterface({
 	input: process.stdin,
 	output: process.stdout
 });

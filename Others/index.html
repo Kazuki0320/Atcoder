@@ -81,6 +81,50 @@
 	const x = stdin.split('\n')[0];
 	console.log(x + "pp");
 
+	【B - 視程の通報(11)】
+	[問題]
+	0.1km 未満： VVの値は 00 とする。
+	0.1km 以上 5km 以下：距離(km)を10倍した値とする。1 桁の場合は上位に 0 を付す。
+	例えば、2,000m =2.0km ならば、VVは 20 である。同じく、200mの場合VVは 02 である。
+	6km 以上 30km 以下：距離 (km) に 50 を足した値とする。
+	例えば、15,000m =15km ならば、VVは 65 である。
+	35km 以上 70km 以下：距離 (km) から 30 を引いて 5 で割った後、80 を足した値とする。
+	例えば、40,000m =40km ならば、VVは 82 である。
+	70km より大きい：VVの値は 89 とする。
+
+	const stdin = require('fs').readFileSync('/dev/stdin', 'utf8');
+
+	const x = parseInt(stdin.split('\n')[0]);
+	if(x < 100)
+	{
+		console.log("00");
+	} else if(x <= 5000) {
+		const y = ((x / 1000) * 10);
+		if(y < 10)
+			console.log("0" + y);
+		else
+			console.log(y);
+	} else if(x <= 30000) {
+		console.log((x / 1000) + 50);
+	} else if(x <= 70000) {
+		console.log((((x / 1000 - 30) / 5) + 80);
+	} else {
+		console.log("89");
+	}
+
+	【B - 罠(12)】
+	const stdin = require('fs').readFileSync('/dev/stdin', 'utf8');
+
+	const x = stdin.split('\n')[0];
+	const exclude = ["a", "i", "u", "e", "o"];
+	let str = "";
+	for(let i = 0; i < x.length; i++) {
+		if(exclude.includes(x[i])) 
+			continue;
+		else
+			str += x[i];
+	}
+	console.log(str);
 	*/
 
 	</script>

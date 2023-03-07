@@ -125,7 +125,130 @@
 			str += x[i];
 	}
 	console.log(str);
-	*/
 
+	【B - AtCoderトランプ(13)】
+	下記、コードはテストで通らず。
+	const stdin = require('fs').readFileSync('/dev/stdin', 'utf8');
+
+	const xs = stdin.split("\n");
+	console.log("xs", xs);// xs ['arc', 'abc']
+	const x = xs[0].toString();
+	const y = xs[1].toString();
+
+	// @を各文字に置き換えるためのオブジェクト
+	const replaceTable = {
+		"@": ["a", "t", "c", "o", "d", "e", "r"]
+	};
+
+	// 文字列s中のtableのキーに対応する文字を、tableの値に置き換える関数
+	function replace(s, table) {
+		return s.split("").map(c => (c in table ? table[c] : c)).join("");
+	}
+
+	// @をそれぞれのアルファベットに置き換えた2つの文字列を作成し、比較する
+	const s1Replaced = replace(x, replaceTable);
+	const s2Replaced = replace(y, replaceTable);
+
+	console.log(s1Replaced === s2Replaced ? "Yes" : "No");
+
+	[他の人が書いたコード(こちらを提出)]
+	"use strict";
+	const Main = (input) =>{
+	let xs = input.trim().split("\n");
+	let A = xs[0].split('');
+	let B = xs[1].split('');
+	let len = xs[0].length
+	let words = ["a", "t", "c", "o", "d", "e", "r"];
+	
+	for(let i=0; i<len; i++){
+		if(A[i] !== B[i] && A[i] !== "@" && B[i] !== "@"){
+				console.log("You will lose");
+				return;
+		}
+		if(A[i] === "@" && B[i] === "@"){
+				continue;
+		}
+
+		if(A[i]=== "@"){
+			if(words.indexOf(B[i])===-1){
+				console.log("You will lose");
+				return;
+			}
+		}
+		if(B[i]=== "@"){
+			if(words.indexOf(A[i])===-1){
+				console.log("You will lose");
+				return;
+			}
+		}
+	}
+	console.log("You can win");
+}
+Main(require('fs').readFileSync('/dev/stdin','utf8'));
+
+1行目では、'use strict'モードを有効にしています。これは、コード内で暗黙的に宣言された変数を禁止し、いくつかの不適切な構文をエラーにすることで、コードの品質を向上させるためのものです。
+
+7行目から16行目までは、文字列の1文字ずつを比較するためのループです。ループ変数iは0からlen-1までの範囲を取ります。
+
+8行目で、A[i]とB[i]が異なる場合かつA[i]とB[i]がともに@でない場合、「You will lose」と表示して処理を終了します。
+
+11行目では、A[i]とB[i]がともに@の場合に実行される処理です。この場合、何もせずにループを継続します。
+
+14行目と17行目は、それぞれA[i]が@である場合とB[i]が@である場合に実行される処理です。これらの場合、@をa, t, c, o, d, e, rのいずれかに置き換えてから、対応する文字を比較します。ただし、a, t, c, o, d, e, r以外の文字が含まれている場合、「You will lose」と表示して処理を終了します
+
+	【B - 回転(14)】
+	高橋君は 4 x 4 マスの盤面を見つけました。
+	各マスには .ox のいずれかの文字が書かれています。
+	彼はこの盤面を回転させた後、どういった状態になるのか気になりました。
+	盤面を正面から見たときの状態が与えられるので、
+	180 度回転させた後の盤面を出力してください。
+	[考えること]
+	・入力値はCi,jで与えられる。
+	・4 * 4で出力できるような処理を書く
+	[0,0][0,1][0,2][0,3]
+	[1,0][1,1][1,2][1,3]...みたいな
+	・出力する際は、 .ox から構成される文字列を出力
+	・180度回転をどうやって処理をかくか
+	→[0,0]から始まっていた処理を[3,3]からにすると180度回転と同じ意味になる。
+
+	[他の人のコード]
+
+import * as fs from "fs";
+
+	export const main = (arg: any) => {
+		const input = arg.trim().split("\n");
+		console.log("input", input);
+		const C1: string = input[0].split("").reverse().join("");
+		const C2: string = input[1].split("").reverse().join("");
+		const C3: string = input[2].split("").reverse().join("");
+		const C4: string = input[3].split("").reverse().join("");
+
+		console.log(C4);
+		console.log(C3);
+		console.log(C2);
+		console.log(C1);
+	};
+
+	const arg = fs.readFileSync("/dev/stdin", "utf8");
+	main(arg);
+
+	//[処理]
+	const main = (arg: any) => {
+		const input = arg.trim().split("\n");
+		console.log("input", input);
+		const C1: string = input[0].split("").reverse().join('');
+		const C2: string = input[1].split("").reverse().join('');
+		const C3: string = input[2].split("").reverse().join('');
+		const C4: string = input[3].split("").reverse().join('');
+		
+		console.log("C4", C4);
+		console.log("C3", C3);
+		console.log("C2", C2);
+		console.log("C1", C1);
+	}
+const arg = require('fs').readFileSync("/dev/stdin", "utf8");
+main(arg);
+
+	*/	
 	</script>
 </html>
